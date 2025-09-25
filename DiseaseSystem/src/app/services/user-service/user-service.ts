@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginRequest } from '../../models/login/login-request.model';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { LoginResponse } from '../../models/login/login-response.model';
+import { UserDetails } from '../../models/login/user-details.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private loginUrl = 'http://localhost:9000/user/api/login'
+  private registerUrl = 'http://localhost:9000/user/api/register'
+  private loginStatus$ = new BehaviorSubject<boolean>(this.hasUser())
+  isLoggedIn$ = this.loginStatus$.asObservable()
+
+  constructor(private httpClient: HttpClient){
+
+  }
+
+  login(credentials: LoginRequest): Observable<LoginResponse>{
+    return this.httpClient.post<LoginResponse>(this.loginUrl, credentials).pipe(
+      tap((res: LoginResponse) => {
+        localStorage.setItem('token', res.token)
+        this.loginStatus$.next(true)
+      })
+    )
+  }
+
+  register(userDetails: UserDetails): Observable<RegisterResponse>{
+    return this.httpClient.post<RegisterResponse>(this.registerUrl, userDetails)
+  }
+
+  private hasUser(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  
+  logout(): void {
+    localStorage.removeItem('token');
+    this.loginStatus$.next(false)
+  }
+}

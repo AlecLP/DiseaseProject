@@ -1,0 +1,72 @@
+<!-- <form [formGroup]="doctorForm" (ngSubmit)="submit()">
+    <h3>Doctor Information Form</h3>
+    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
+    <input type="text" formControlName="name" placeholder="Full Name" />
+    <input type="text" formControlName="contact" placeholder="Contact Info" />
+    <input type="text" formControlName="specialty" placeholder="Specialty" />
+    <label>Experience:</label>
+    <input type="number" formControlName="experience" placeholder="Experience (Years)" />
+
+    <label>Availability:</label>
+    <div *ngFor="let day of daysOfWeek">
+        <input 
+            type="checkbox" 
+            [value]="day" 
+            (change)="onCheckboxChange($event)" />
+        {{ day }}
+    </div>
+
+    <label>Fees:</label>
+    <input type="number" formControlName="fees" placeholder="Additional Fees" />
+    
+    <button type="submit" [disabled]="doctorForm.invalid">Save Info</button>
+</form> -->
+<form [formGroup]="doctorForm" (ngSubmit)="submit()">
+    <h3>Doctor Information Form</h3>
+    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
+  
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" formControlName="name" />
+    </div>
+  
+    <div class="form-group">
+        <label for="contact">Contact Info</label>
+        <input id="contact" type="text" formControlName="contact" />
+    </div>
+  
+    <div class="form-group">
+        <label for="specialty">Specialty</label>
+        <input id="specialty" type="text" formControlName="specialty" />
+    </div>
+  
+    <div class="form-row">
+        <div class="form-group">
+            <label for="experience">Experience (Years)</label>
+            <input id="experience" type="number" formControlName="experience" />
+        </div>
+  
+        <div class="form-group">
+            <label for="fees">Consultation Fees</label>
+            <input id="fees" type="number" formControlName="fees" />
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label>Availability</label>
+        <div class="checkbox-group">
+            <div *ngFor="let day of daysOfWeek" class="checkbox-item">
+            <input 
+                type="checkbox"
+                [value]="day"
+                (change)="onCheckboxChange($event)"
+                id="{{day}}"
+            />
+            <label for="{{day}}">{{ day }}</label>
+            </div>
+        </div>
+    </div>
+  
+    <button type="submit" [disabled]="doctorForm.invalid">Save Info</button>
+</form>
+  

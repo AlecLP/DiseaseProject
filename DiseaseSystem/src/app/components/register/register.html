@@ -1,0 +1,12 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+    <h3>Register</h3>
+    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
+    <input type="text" formControlName="username" placeholder="Username" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <select formControlName="role">
+        <option value="" disabled>Select a role</option>
+        <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+    </select>
+    
+    <button type="submit" [disabled]="userForm.invalid">Register</button>
+</form>

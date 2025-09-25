@@ -1,0 +1,12 @@
+<div class="header-flex-container">
+    <div class="header-title">
+        <p>Disease System</p>
+    </div>
+    <div class="header-links">
+        <p>Link | Link | Link | Link</p>
+    </div>
+    <div class="header-login">
+        <button *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</button>
+        <button *ngIf="isLoggedIn$ | async" (click)="logout()">Logout</button>
+    </div>
+</div>
