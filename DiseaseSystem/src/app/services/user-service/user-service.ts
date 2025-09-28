@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequest } from '../../models/login/login-request.model';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+import { LoginRequest } from '../../models/login/login-request.model';
 import { LoginResponse } from '../../models/login/login-response.model';
 import { UserDetails } from '../../models/login/user-details.model';
+import { JwtPayload } from '../../models/jwt/jwt-payload.mode';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +40,19 @@ export class UserService {
   logout(): void {
     localStorage.removeItem('token');
     this.loginStatus$.next(false)
+  }
+
+  get token(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  get role(): string | null {
+    if (!this.token) return null;
+    try {
+      const decoded = jwtDecode<JwtPayload>(this.token);
+      return decoded.role;
+    } catch {
+      return null;
+    }
   }
 }

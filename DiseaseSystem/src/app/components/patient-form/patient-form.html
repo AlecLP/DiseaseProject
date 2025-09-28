@@ -1,0 +1,10 @@
+<form [formGroup]="patientForm" (ngSubmit)="submit()">
+    <h3>Patient Intake Information</h3>
+    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
+    <input type="text" formControlName="name" placeholder="Name" />
+    <input type="text" formControlName="email" placeholder="Email" />
+    <input type="text" formControlName="address" placeholder="Address" />
+    <input type="text" formControlName="symptoms" placeholder="Symptoms" />
+    
+    <button type="submit" [disabled]="patientForm.invalid">Save Patient Info</button>
+</form>

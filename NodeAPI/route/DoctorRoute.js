@@ -23,4 +23,24 @@ doctorRouter.post("/api/save", authMiddleware, async (req, res) => {
     }
 });
 
+doctorRouter.get("/specialty/:specialty", authMiddleware, async (req, res) => {
+    try {
+      const { specialty } = req.params;
+  
+      // Case-insensitive search
+      const doctors = await DoctorModel.find({
+        specialty: { $regex: new RegExp("^" + specialty + "$", "i") },
+      });
+  
+      if (!doctors.length) {
+        return res.status(404).json({ message: "No doctors found that are specialized in that disease." });
+      }
+  
+      res.json(doctors);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+
 module.exports = doctorRouter

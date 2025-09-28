@@ -3,7 +3,10 @@
         <p>Disease System</p>
     </div>
     <div class="header-links">
-        <p>Link | Link | Link | Link</p>
+        <a routerLink="/">Home</a>
+        <a *ngIf="userService.role === 'Doctor'" routerLink="/doctor">Doctor Form</a>
+        <a *ngIf="userService.role === 'Doctor'" routerLink="/disease">Disease Form</a>
+        <a *ngIf="userService.role === 'User'" routerLink="/patient">Patient Intake Form</a>
     </div>
     <div class="header-login">
         <button *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</button>

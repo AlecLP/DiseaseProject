@@ -1,0 +1,14 @@
+<form [formGroup]="diseaseForm" (ngSubmit)="submit()">
+    <h3>Disease Information</h3>
+    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
+    <input type="text" formControlName="name" placeholder="Disease Name" />
+    <input type="text" formControlName="category" placeholder="Category" />
+    <input type="text" formControlName="description" placeholder="Description" />
+    <input type="text" formControlName="symptoms" placeholder="Symptoms" />
+    <select formControlName="severity">
+        <option value="" disabled>Select a severity level</option>
+        <option *ngFor="let s of severityOptions" [value]="s">{{s}}</option>
+    </select>
+    
+    <button type="submit" [disabled]="diseaseForm.invalid">Save Disease Info</button>
+</form>

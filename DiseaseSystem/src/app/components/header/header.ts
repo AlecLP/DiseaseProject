@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class Header {
   isLoggedIn$!: Observable<boolean>;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(public userService: UserService, private router: Router) {
     this.isLoggedIn$ = this.userService.isLoggedIn$;
   }
 
