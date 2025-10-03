@@ -4,6 +4,8 @@ import { Register } from './components/register/register';
 import { DoctorForm } from './components/doctor-form/doctor-form';
 import { DiseaseForm } from './components/disease-form/disease-form';
 import { PatientForm } from './components/patient-form/patient-form';
+import { Appointment } from './components/appointment/appointment';
+import { Payment } from './components/payment/payment';
 
 export const routes: Routes = [
     {
@@ -30,5 +32,15 @@ export const routes: Routes = [
         path: "patient",
         component: PatientForm,
         title: "Patient Intake Form"
+    },
+    {
+        path: "appointment",
+        component: Appointment,
+        title: "Schedule an Appointment"
+    },
+    {
+        path: "payment",
+        component: Payment,
+        title: "Make a Payment"
     },
 ];

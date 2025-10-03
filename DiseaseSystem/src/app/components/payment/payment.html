@@ -1,0 +1,11 @@
+<div class="payment-form">
+    <h2>Payment</h2>
+    
+    <select>
+      <option value="" disabled selected>Select a payment option</option>
+      <option *ngFor="let o of paymentOptions">{{o}}</option>
+    </select>
+  
+    <button routerLink="/">Make Payment</button>
+</div>
+  

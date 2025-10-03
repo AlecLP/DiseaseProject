@@ -1,0 +1,39 @@
+<div class="appointment-form">
+    <h2>Schedule Appointment</h2>
+  
+    <!-- Step 1: Select Disease -->
+    <label>Disease/Ailment:</label>
+    <select (change)="onDiseaseSelect($event)">
+        <option value="" disabled selected>Select disease</option>
+        <option *ngFor="let disease of diseases$ | async" [value]="disease._id">
+            {{ disease.name }}
+        </option>
+    </select>
+  
+    <!-- Step 2: Select Doctor -->
+    <div *ngIf="doctors.length > 0">
+      <label>Doctor:</label>
+      <select (change)="onDoctorSelect($event)">
+        <option value="" disabled selected>Select doctor</option>
+        <option *ngFor="let doctor of doctors" [value]="doctor._id">
+          {{ doctor.name }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- Step 3: Select Day -->
+    <div *ngIf="selectedDoctor">
+      <label>Available Days:</label>
+      <select [(ngModel)]="selectedDay">
+        <option *ngFor="let day of selectedDoctor?.availability" [value]="day">
+          {{ day }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- Submit -->
+    <div *ngIf="selectedDay">
+      <button (click)="scheduleAppointment()">Confirm Appointment</button>
+    </div>
+</div>
+  

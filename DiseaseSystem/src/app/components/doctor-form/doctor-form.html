@@ -1,26 +1,3 @@
-<!-- <form [formGroup]="doctorForm" (ngSubmit)="submit()">
-    <h3>Doctor Information Form</h3>
-    <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
-    <input type="text" formControlName="name" placeholder="Full Name" />
-    <input type="text" formControlName="contact" placeholder="Contact Info" />
-    <input type="text" formControlName="specialty" placeholder="Specialty" />
-    <label>Experience:</label>
-    <input type="number" formControlName="experience" placeholder="Experience (Years)" />
-
-    <label>Availability:</label>
-    <div *ngFor="let day of daysOfWeek">
-        <input 
-            type="checkbox" 
-            [value]="day" 
-            (change)="onCheckboxChange($event)" />
-        {{ day }}
-    </div>
-
-    <label>Fees:</label>
-    <input type="number" formControlName="fees" placeholder="Additional Fees" />
-    
-    <button type="submit" [disabled]="doctorForm.invalid">Save Info</button>
-</form> -->
 <form [formGroup]="doctorForm" (ngSubmit)="submit()">
     <h3>Doctor Information Form</h3>
     <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
@@ -69,4 +46,3 @@
   
     <button type="submit" [disabled]="doctorForm.invalid">Save Info</button>
 </form>
-  

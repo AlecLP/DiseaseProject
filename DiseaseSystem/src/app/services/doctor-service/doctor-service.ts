@@ -21,6 +21,8 @@ export class DoctorService {
   }
 
   getDoctorsBySpecialty(specialty: string): Observable<DoctorDetails[]> {
-    return this.httpClient.get<DoctorDetails[]>(`${this.doctorBaseUrl}/specialty/${specialty}`);
+    return this.httpClient.get<DoctorDetails[]>(`${this.doctorBaseUrl}/specialty/${specialty}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+    });
   }
 }

@@ -22,6 +22,8 @@ const diseaseApp = express()
 const diseaseRoute = require("./route/DiseaseRoute")
 const patientApp = express()
 const patientRoute = require("./route/PatientRoute")
+const appointmentApp = express()
+const appointmentRoute = require("./route/AppointmentRoute")
 
 //Using Apps and Routes
 //======================================================
@@ -33,6 +35,8 @@ app.use("/disease", diseaseApp)
 diseaseApp.use("/", diseaseRoute)
 app.use("/patient", patientApp)
 patientApp.use("/", patientRoute)
+app.use("/appointment", appointmentApp)
+appointmentApp.use("/", appointmentRoute)
 
 const port = 9000
 console.log("REST API is listening on port: ", port)

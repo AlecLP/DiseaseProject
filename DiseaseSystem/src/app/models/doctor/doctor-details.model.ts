@@ -1,4 +1,5 @@
 export interface DoctorDetails{
+    _id?: string
     name: string
     contact: string
     specialty: string
