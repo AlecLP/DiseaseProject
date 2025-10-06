@@ -1,4 +1,4 @@
-<form [formGroup]="doctorForm" (ngSubmit)="submit()">
+<form *ngIf="userService.role === 'Doctor'" [formGroup]="doctorForm" (ngSubmit)="submit()">
     <h3>Doctor Information Form</h3>
     <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
   
@@ -46,3 +46,17 @@
   
     <button type="submit" [disabled]="doctorForm.invalid">Save Info</button>
 </form>
+
+<div *ngIf="userService.role === 'User'" class="user-doctor-list">
+    <h3>All Doctors</h3>
+    <div *ngIf="doctors$ | async as doctors; else noDoctors">
+      <div *ngFor="let doc of doctors" class="doctor-card">
+        <p><strong>{{ doc.name }}</strong> — {{ doc.specialty }}</p>
+        <p>Experience: {{ doc.experience }} yrs | Fees: ${{ doc.fees }}</p>
+        <button (click)="viewReviews(doc._id!)">View Reviews</button>
+      </div>
+    </div>
+    <ng-template #noDoctors>
+      <p>No doctors found.</p>
+    </ng-template>
+</div>

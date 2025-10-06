@@ -1,0 +1,73 @@
+.reviews-section {
+  width: 32rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 2px solid #ccc;
+  border-radius: .8rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+
+  h3, h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.review-card {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  p:first-child {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    color: #444;
+  }
+
+  p:last-child {
+    color: #555;
+    font-size: 0.95rem;
+  }
+}
+
+.reviews-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  input[type="number"], textarea {
+    padding: 0.6rem;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  button {
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border: none;
+    background-color: #b91c1c;
+    color: white;
+    border-radius: .3rem;
+    margin-top: 1rem;
+
+    &:hover {
+        background-color: #860d0d;
+    }
+  }
+}

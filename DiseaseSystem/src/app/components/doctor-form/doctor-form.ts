@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { DoctorDetails } from '../../models/doctor/doctor-details.model';
 import { DoctorService } from '../../services/doctor-service/doctor-service';
 import { DoctorResponse } from '../../models/doctor/doctor-response.model';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user-service/user-service';
 
 @Component({
   selector: 'app-doctor-form',
@@ -16,8 +18,9 @@ export class DoctorForm {
   doctorForm: FormGroup
   message$ = new Subject<String>()
   readonly daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  doctors$: Observable<DoctorDetails[]>;
 
-  constructor(private fb: NonNullableFormBuilder, private doctorService: DoctorService){
+  constructor(private fb: NonNullableFormBuilder, private doctorService: DoctorService, public userService: UserService, private router: Router){
     this.doctorForm = this.fb.group({
       name: ['', Validators.required],
       contact: ['', Validators.required],
@@ -26,6 +29,8 @@ export class DoctorForm {
       availability: this.fb.array([], Validators.required),
       fees: [0, Validators.required]
     })
+
+    this.doctors$ = this.doctorService.findAllDoctors();
   }
 
   get availabilityArray(): FormArray {
@@ -55,5 +60,9 @@ export class DoctorForm {
         }
       })
     }
+  }
+
+  viewReviews(doctorId: string) {
+    this.router.navigate(['/doctor', doctorId, 'reviews']);
   }
 }

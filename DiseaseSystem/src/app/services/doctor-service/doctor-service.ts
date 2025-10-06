@@ -25,4 +25,10 @@ export class DoctorService {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
     });
   }
+
+  findAllDoctors() {
+    return this.httpClient.get<DoctorDetails[]>(`${this.doctorBaseUrl}/findAll`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+    }); 
+  }
 }

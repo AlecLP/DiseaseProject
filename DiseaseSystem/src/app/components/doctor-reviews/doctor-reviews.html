@@ -1,0 +1,27 @@
+<div class="reviews-section">
+  <h3>Doctor Reviews</h3>
+
+  <div *ngIf="reviews$ | async as reviews; else noReviews">
+    <div *ngFor="let r of reviews" class="review-card">
+      <p>⭐ {{ r.rating }}/5</p>
+      <p>{{ r.review }}</p>
+    </div>
+  </div>
+
+  <ng-template #noReviews>
+    <p>No reviews yet. Be the first to add one!</p>
+  </ng-template>
+
+  <hr />
+
+  <h4>Leave a Review</h4>
+  <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+    <label for="rating">Rating (1-5)</label>
+    <input type="number" formControlName="rating" min="1" max="5" />
+
+    <label for="review">Review</label>
+    <textarea formControlName="review"></textarea>
+
+    <button type="submit" [disabled]="reviewForm.invalid">Submit</button>
+  </form>
+</div>

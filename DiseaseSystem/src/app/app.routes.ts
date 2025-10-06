@@ -6,6 +6,7 @@ import { DiseaseForm } from './components/disease-form/disease-form';
 import { PatientForm } from './components/patient-form/patient-form';
 import { Appointment } from './components/appointment/appointment';
 import { Payment } from './components/payment/payment';
+import { DoctorReviews } from './components/doctor-reviews/doctor-reviews';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,11 @@ export const routes: Routes = [
         path: "doctor",
         component: DoctorForm,
         title: "Doctor Form"
+    },
+    { 
+        path: 'doctor/:doctorId/reviews', 
+        component: DoctorReviews,
+        title: "Doctor Reviews"
     },
     {
         path: "disease",

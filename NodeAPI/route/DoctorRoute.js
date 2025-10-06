@@ -43,6 +43,18 @@ doctorRouter.get("/api/specialty/:specialty", authMiddleware, async (req, res) =
       console.error(error);
       res.status(500).json({ message: "Server error" });
     }
-  });
+});
+
+doctorRouter.get("/api/findAll", authMiddleware, async (req, res) => {
+  DoctorModel.find()
+    .then((doctors)=>{
+        console.log("Found doctors: ", doctors)
+        res.status(200).send(doctors)
+    })
+    .catch((err)=>{
+        console.log("Error while fetching doctors: ", err)
+        res.status(500).send("Error while fetching doctors")
+    })
+})
 
 module.exports = doctorRouter
