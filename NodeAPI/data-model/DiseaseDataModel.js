@@ -12,7 +12,10 @@ let diseaseSchema = new schemaObj({
         type: String,
         enum: ["Mild", "Moderate", "Severe"],
         required: true
-    }
+    },
+    treatmentProcedure: {type: String, required: true},
+    estimatedTime: {type: String, required: true},
+    estimatedCost: {type: Number, required: true}
 },
 {
     versionKey: false

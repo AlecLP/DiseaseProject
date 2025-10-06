@@ -9,6 +9,10 @@
         <option value="" disabled>Select a severity level</option>
         <option *ngFor="let s of severityOptions" [value]="s">{{s}}</option>
     </select>
+    <input type="text" formControlName="treatmentProcedure" placeholder="Treatment Procedure" />
+    <input type="text" formControlName="estimatedTime" placeholder="Estimated Time" />
+    <label For="estimatedCost">Estimated Cost</label>
+    <input type="number" formControlName="estimatedCost" placeholder="Estimated Cost" />
     
     <button type="submit" [disabled]="diseaseForm.invalid">Save Disease Info</button>
 </form>

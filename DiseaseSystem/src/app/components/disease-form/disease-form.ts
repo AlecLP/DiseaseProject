@@ -23,7 +23,10 @@ export class DiseaseForm {
       category: ['', Validators.required],
       description: ['', Validators.required],
       symptoms: ['', Validators.required],
-      severity: ['', Validators.required]
+      severity: ['', Validators.required],
+      treatmentProcedure: ['', Validators.required],
+      estimatedTime: ['', Validators.required],
+      estimatedCost: [0, Validators.required]
     })
   }
 

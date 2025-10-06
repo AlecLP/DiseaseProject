@@ -4,5 +4,8 @@ export interface DiseaseDetails {
     category: string,
     description: string,
     symptoms: string, 
-    severity: string
+    severity: string,
+    treatmentProcedure: string,
+    estimatedTime: string,
+    estimatedCost: string
 }
