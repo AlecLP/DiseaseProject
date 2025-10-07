@@ -26,6 +26,8 @@ export class Appointment implements OnInit {
   selectedDisease?: DiseaseDetails
   selectedDoctor?: DoctorDetails
   selectedDay?: string
+  selectedDate?: string;
+  minDate: string = new Date().toISOString().split('T')[0];
 
   constructor(
     private diseaseService: DiseaseService,
@@ -64,8 +66,26 @@ export class Appointment implements OnInit {
     this.selectedDoctor = this.doctors.find(doc => doc._id === id);
   }
 
+  onDateChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const [year, month, day] = input.value.split('-').map(Number);
+    const selected = new Date(year, month - 1, day); 
+    const weekday = selected.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+  
+    // make sure availability is defined and normalized
+    const allowedDays = (this.selectedDoctor?.availability || []).map(d => d.toLowerCase());
+  
+    if (!allowedDays.includes(weekday)) {
+      alert(`Doctor not available on ${weekday.charAt(0).toUpperCase() + weekday.slice(1)}. Please choose another date.`);
+      this.selectedDate = '';
+      input.value = '';
+    } else {
+      this.selectedDate = input.value;
+    }
+  }
+
   scheduleAppointment(): void {
-    if (!this.selectedDoctor || !this.selectedDay || !this.selectedDisease) {
+    if (!this.selectedDoctor || !this.selectedDay || !this.selectedDisease || !this.selectedDate) {
       alert('Please select all fields.');
       return;
     }
@@ -89,6 +109,7 @@ export class Appointment implements OnInit {
       diseaseId: this.selectedDisease._id!,
       doctorId: this.selectedDoctor._id!,
       day: this.selectedDay!,
+      date: this.selectedDate!,
       userId: decoded._id
     };
   

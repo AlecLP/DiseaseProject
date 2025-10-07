@@ -30,6 +30,17 @@
         </option>
       </select>
     </div>
+
+    <!-- Step 4: Select Date -->
+    <div *ngIf="selectedDoctor && selectedDay">
+      <label>Select Appointment Date:</label>
+      <input
+        type="date"
+        [(ngModel)]="selectedDate"
+        [min]="minDate"
+        (change)="onDateChange($event)"
+      />
+    </div>
   
     <!-- Submit -->
     <div *ngIf="selectedDay">

@@ -6,6 +6,7 @@ let appointmentSchema = new schemaObj({
     diseaseId: { type: mongoose.Schema.Types.ObjectId, ref: "disease", required: true },
     doctorId: { type: mongoose.Schema.Types.ObjectId, ref: "doctor", required: true },
     day: {type: String, required: true},
+    date: {type: Date, required: true},
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true },
 },
 {
