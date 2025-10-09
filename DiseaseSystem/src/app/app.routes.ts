@@ -7,6 +7,7 @@ import { PatientForm } from './components/patient-form/patient-form';
 import { Appointment } from './components/appointment/appointment';
 import { Payment } from './components/payment/payment';
 import { DoctorReviews } from './components/doctor-reviews/doctor-reviews';
+import { Summary } from './components/summary/summary';
 
 export const routes: Routes = [
     {
@@ -49,4 +50,9 @@ export const routes: Routes = [
         component: Payment,
         title: "Make a Payment"
     },
+    {
+        path: "summary",
+        component: Summary,
+        title: "Summary"
+    }
 ];

@@ -5,9 +5,10 @@
     <div class="header-links">
         <a routerLink="/">Home</a>
         <a *ngIf="isLoggedIn$ | async" routerLink="/doctor">Doctors</a>
-        <a *ngIf="userService.role === 'Doctor'" routerLink="/disease">Disease Form</a>
+        <a *ngIf="userService.role === 'Doctor' || userService.role === 'Admin'" routerLink="/disease">Disease Form</a>
         <a *ngIf="userService.role === 'User'" routerLink="/patient">Patient Intake Form</a>
         <a *ngIf="userService.role === 'User'" routerLink="/appointment">Schedule Appointment</a>
+        <a *ngIf="isLoggedIn$ | async" routerLink="/summary">Summary</a>
     </div>
     <div class="header-login">
         <button *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</button>

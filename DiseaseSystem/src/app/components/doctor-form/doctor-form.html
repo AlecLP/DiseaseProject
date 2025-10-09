@@ -1,4 +1,4 @@
-<form *ngIf="userService.role === 'Doctor'" [formGroup]="doctorForm" (ngSubmit)="submit()">
+<form *ngIf="userService.role === 'Doctor' || userService.role === 'Admin'" [formGroup]="doctorForm" (ngSubmit)="submit()">
     <h3>Doctor Information Form</h3>
     <p *ngIf="message$ | async as message" class="errors">{{ message }}</p>
   

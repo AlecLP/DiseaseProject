@@ -1,0 +1,27 @@
+<div class="admin-summary">
+    <h2>Patient Summary</h2>
+  
+    <table *ngIf="summaryData$ | async as summary; else loading">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Disease</th>
+          <th>Severity</th>
+          <th>Latest Appointment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of summary">
+          <td>{{ s.patientName }}</td>
+          <td>{{ s.diseaseName }}</td>
+          <td>{{ s.severity }}</td>
+          <td>{{ s.latestAppointment | date:'mediumDate':'UTC' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #loading>
+      <p>Loading summary data...</p>
+    </ng-template>
+</div>
+  
