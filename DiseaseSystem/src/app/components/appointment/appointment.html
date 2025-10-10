@@ -23,6 +23,7 @@
   
     <!-- Step 3: Select Day -->
     <div *ngIf="selectedDoctor">
+      <label>Cost: {{doctorCost}}</label><br><br>
       <label>Available Days:</label>
       <select [(ngModel)]="selectedDay">
         <option *ngFor="let day of selectedDoctor?.availability" [value]="day">

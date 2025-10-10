@@ -28,6 +28,7 @@ export class Appointment implements OnInit {
   selectedDay?: string
   selectedDate?: string;
   minDate: string = new Date().toISOString().split('T')[0];
+  doctorCost: number = 0
 
   constructor(
     private diseaseService: DiseaseService,
@@ -64,6 +65,7 @@ export class Appointment implements OnInit {
     const target = event.target as HTMLSelectElement;
     const id = target.value;
     this.selectedDoctor = this.doctors.find(doc => doc._id === id);
+    this.doctorCost = this.selectedDoctor?.fees!
   }
 
   onDateChange(event: Event): void {
@@ -110,7 +112,8 @@ export class Appointment implements OnInit {
       doctorId: this.selectedDoctor._id!,
       day: this.selectedDay!,
       date: this.selectedDate!,
-      userId: decoded._id
+      userId: decoded._id,
+      cost: this.selectedDoctor.fees
     };
   
     this.appointmentService.saveAppointment(appointment)

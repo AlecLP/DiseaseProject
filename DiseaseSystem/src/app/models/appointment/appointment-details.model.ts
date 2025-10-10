@@ -4,4 +4,5 @@ export interface AppointmentDetails {
     day: string
     date: string
     userId: string
+    cost: number
 }

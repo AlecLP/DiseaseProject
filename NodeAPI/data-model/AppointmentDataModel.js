@@ -8,6 +8,7 @@ let appointmentSchema = new schemaObj({
     day: {type: String, required: true},
     date: {type: Date, required: true},
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true },
+    cost: { type: Number, required: true }
 },
 {
     versionKey: false
