@@ -76,6 +76,6 @@ appointmentRouter.get('/api/patient-latest-appointments', authMiddleware, async 
     console.error(err);
     res.status(500).json({ message: "Error fetching patient summary" });
   }
-});  
+});
 
 module.exports = appointmentRouter

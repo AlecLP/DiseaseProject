@@ -1,0 +1,51 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  
+  .chart-section {
+    flex: 1 1 45%;
+    min-width: 350px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chart-section h2 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Fix distorted chart by preserving aspect ratio */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1; /* keeps charts square */
+  }
+
+  .chart-container.horizontal-bar {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: auto; /* let height scale naturally */
+    padding-bottom: 0; /* prevent extra padding messing with y-axis */
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+  

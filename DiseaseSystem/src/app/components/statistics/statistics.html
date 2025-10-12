@@ -1,0 +1,27 @@
+<div class="dashboard">
+
+  <div class="chart-section">
+    <h2>System Overview</h2>
+    <div class="chart-container">
+      <canvas
+        baseChart
+        [data]="countsData"
+        [type]="'bar'"
+        [options]="countsOptions">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <h2>Top 5 Common Diseases</h2>
+    <div class="chart-container horizontal-bar">
+      <canvas
+        baseChart
+        [data]="diseasesData"
+        [type]="'bar'"
+        [options]="diseasesOptions">
+      </canvas>
+    </div>
+  </div>
+
+</div>

@@ -8,8 +8,14 @@ import { Appointment } from './components/appointment/appointment';
 import { Payment } from './components/payment/payment';
 import { DoctorReviews } from './components/doctor-reviews/doctor-reviews';
 import { Summary } from './components/summary/summary';
+import { Statistics } from './components/statistics/statistics';
+import { Home } from './components/home/home';
 
 export const routes: Routes = [
+    {
+        path: '',
+        component: Home
+    },
     {
         path: "login",
         component: Login,
@@ -49,6 +55,11 @@ export const routes: Routes = [
         path: "payment",
         component: Payment,
         title: "Make a Payment"
+    },
+    {
+        path: "statistics",
+        component: Statistics,
+        title: "Statistics"
     },
     {
         path: "summary",

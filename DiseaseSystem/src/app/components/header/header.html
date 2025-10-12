@@ -8,7 +8,8 @@
         <a *ngIf="userService.role === 'Doctor' || userService.role === 'Admin'" routerLink="/disease">Disease Form</a>
         <a *ngIf="userService.role === 'User'" routerLink="/patient">Patient Intake Form</a>
         <a *ngIf="userService.role === 'User'" routerLink="/appointment">Schedule Appointment</a>
-        <a *ngIf="isLoggedIn$ | async" routerLink="/summary">Summary</a>
+        <a *ngIf="userService.role === 'Admin'" routerLink="/statistics">Statistics</a>
+        <a *ngIf="userService.role === 'Admin' || userService.role === 'User'" routerLink="/summary">Summary</a>
     </div>
     <div class="header-login">
         <button *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</button>
